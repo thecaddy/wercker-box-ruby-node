@@ -1,0 +1,35 @@
+name: node-ruby
+version: 1.0.0
+inherits: wercker/ruby
+type: main
+platform: ubuntu@14.04
+packages:
+  - nodejs@0.12.0
+description: |
+  Wercker box with Node.js 0.12.0 and Ruby on Ubuntu 14.04
+keywords:
+  - nodejs
+  - ruby
+  - 0.12
+  - nodejs 0.12
+  - ubuntu
+  - 14.04
+  - ubuntu 14.04
+  - wercker
+  - webessentials
+script: |
+  export NODEVERSION=0.12.0
+  sudo apt-get update
+  sudo apt-get install wget build-essential
+  cd $HOME
+  mkdir nodeinstall
+  cd nodeinstall
+  wget http://nodejs.org/dist/v$NODEVERSION/node-v$NODEVERSION.tar.gz
+  tar xzf node-v$NODEVERSION.tar.gz
+  cd node-v$NODEVERSION
+  ./configure
+  make
+  sudo make install
+  cd $HOME
+  rm -fr nodeinstall
+  node -v
