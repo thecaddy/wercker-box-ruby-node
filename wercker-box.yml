@@ -1,15 +1,14 @@
 name: node-ruby
 version: 1.0.0
-inherits: wercker/ruby
+inherits: wercker/ubuntu12.04-ruby2.0.0@1.0.0
 type: main
 platform: ubuntu@14.04
 packages:
   - nodejs@0.12.0
 description: |
-  Wercker box with Node.js 0.12.0 and Ruby on Ubuntu 14.04
+  Wercker box with Node.js and Ruby on Ubuntu 14.04 
 keywords:
   - nodejs
-  - ruby
   - 0.12
   - nodejs 0.12
   - ubuntu
