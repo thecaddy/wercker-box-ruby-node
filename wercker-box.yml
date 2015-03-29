@@ -1,6 +1,6 @@
 name: node-ruby
 version: 1.1.0
-inherits: wercker/ubuntu12.04-ruby2.0.0@1.0.0
+inherits: wercker-labs/docker
 type: main
 platform: ubuntu@14.04
 packages:
@@ -19,8 +19,12 @@ keywords:
 script: |
   export NODEVERSION=0.12.1
   sudo apt-get update
-  sudo apt-get install wget build-essential
+  sudo apt-get install -y wget build-essential git zlib1g-dev libreadline-dev libqtwebkit-dev curl
+
   wget -qO- https://get.docker.com/ | sh
+  sudo service docker restart
+  sudo usermod -aG docker ubuntu
+
   cd $HOME
   mkdir nodeinstall
   cd nodeinstall
@@ -33,3 +37,9 @@ script: |
   cd $HOME
   rm -fr nodeinstall
   node -v
+
+  curl -sSL https://get.rvm.io | bash -s stable
+  echo "bundler -v~>1.5.1" > $HOME/.rvm/gemsets/global.gems
+  source $HOME/.rvm/scripts/rvm
+  rvm install 2.2.1
+  rvm --default use 2.2.1
