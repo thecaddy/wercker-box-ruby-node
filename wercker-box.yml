@@ -2,7 +2,7 @@ name: node-ruby
 version: 1.1.0
 inherits: wercker-labs/docker
 type: main
-platform: ubuntu@14.04
+platform: ubuntu@12.04
 packages:
   - nodejs@0.12.1
 description: |
